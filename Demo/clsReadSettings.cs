@@ -11,11 +11,26 @@ namespace ReadIniSettings
         {
             public double speed;
             public double frequency;
+            public string Ip;
+        }
+
+        public struct IniRobot
+        {
+            public string Port;
+            public string Ip;
+        }
+
+        public struct IniServer
+        {
+            public string Port;
+            public string Ip;
         }
 
         public struct IniValue
         {
             public IniScanner iniScanner;
+            public IniRobot iniRobot;
+            public IniServer iniServer;
         }
 
         public static IniValue objIniValue = new IniValue();
@@ -123,7 +138,7 @@ namespace ReadIniSettings
                 strErr = "ÎÄ¼þ¶ªÊ§: " + strPath;
                 return false;
             }
-            //Get and verify the master directory
+            /**************scanner config***********************************/
             str_Res = ReadPrivateProfileStringKey("Scanner", "frequency", strPath);
             if (str_Res == "Error")
             {
@@ -141,6 +156,49 @@ namespace ReadIniSettings
             }
             objIniValue.iniScanner.speed = double.Parse(str_Res);
 
+            //Get and verify the master directory
+            str_Res = ReadPrivateProfileStringKey("Scanner", "ip", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniScanner.Ip = str_Res;
+
+            /***********************robot  config*******************************/
+            str_Res = ReadPrivateProfileStringKey("Robot", "port", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniRobot.Port = str_Res;
+            //robot IP
+            str_Res = ReadPrivateProfileStringKey("Robot", "ip", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniRobot.Ip = str_Res;
+
+            /*************************server config*****************************/
+            str_Res = ReadPrivateProfileStringKey("Server", "port", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniServer.Port = str_Res;
+            //Get and verify the master directory
+            str_Res = ReadPrivateProfileStringKey("Server", "ip", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniServer.Ip = str_Res;
+
             return true;
         }
 
@@ -150,6 +208,13 @@ namespace ReadIniSettings
             //Get and verify the master directory
             WriteString("Scanner", "frequency", objIniValue.iniScanner.frequency.ToString(),strPath);
             WriteString("Scanner", "speed", objIniValue.iniScanner.speed.ToString(), strPath);
+            WriteString("Scanner", "ip", objIniValue.iniScanner.Ip.ToString(), strPath);
+
+            WriteString("Robot", "port", objIniValue.iniRobot.Port, strPath);
+            WriteString("Robot", "ip", objIniValue.iniRobot.Ip, strPath);
+
+            WriteString("Server", "port", objIniValue.iniServer.Port, strPath);
+            WriteString("Server", "ip", objIniValue.iniServer.Ip, strPath);
 
             return ;
         }

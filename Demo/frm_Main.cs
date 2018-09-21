@@ -32,30 +32,33 @@ namespace Demo
         }
         private void btn_start_Click(object sender, EventArgs e)
         {
-            clsAlgorithm ag = new clsAlgorithm();
-            ag.MatricOperation();
-
-            string strRpcMsg = "";
-            if(bInitHal == false)
-            {
-                InitialHal();
-                return;
-            }
-
+            //if(bInitHal == false)
+            //{
+            //    InitialHal();
+            //    return;
+            //}
+            btn_start.Enabled = false;
             objScanner.StartGetPoint();
-            objScanner.StartGetPoint();
-
-            objAlgorithm.StartOneRpc(ref strRpcMsg);
-
-
-
-
-
+            //double[,] mtric = new double[4, 4] { { }, { }, { }, { } };
+            //clsAlgorithm ag = new clsAlgorithm();
+            //ag.MatricOperation();
         }
 
+
+        private void btn_Stop_Click(object sender, EventArgs e)
+        {
+            string strRpcMsg = "";
+            objScanner.StopGetPoint();
+            btn_start.Enabled = true;
+            System.Threading.Thread.Sleep(100);
+            objAlgorithm.StartOneRpc(ref strRpcMsg);
+            OnLog("Get Matric: " + strRpcMsg);
+        }
         private void OnLog(string strLog)
         {
-
+            if (strLog.EndsWith("\r\n") == false) strLog += "\r\n";
+            strLog = string.Format("{0}: {1}", System.DateTime.Now, strLog);
+            rtb_debug.AppendText(strLog);
         }
         
         private bool InitialHal()
@@ -63,14 +66,19 @@ namespace Demo
             bool bStatue;
 
             objAlgorithm = new  clsAlgorithm_Server();
+           
             objXml = new clsXML();
+
+            //scanner
             try
             {
+                clsScanner.Callback += new clsScanner.OnMessageCallback(OnLog);
                 objScanner = new clsScanner();
+               
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
 
             //robot
@@ -84,7 +92,8 @@ namespace Demo
             if (bStatue == false)
             {
                 bInitHal = false;
-                MessageBox.Show("robot connection error");
+                //MessageBox.Show("robot connect fail");
+                OnLog("robot connect fail");
                 return false;
             }
 
@@ -97,5 +106,11 @@ namespace Demo
             frm_Setting fmSetting = new frm_Setting();
             fmSetting.ShowDialog();
         }
+
+        private void CreateArryFromStr(string str)
+        {
+
+        }
+
     }
 }

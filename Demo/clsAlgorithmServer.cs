@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Routeguide;
 using Grpc.Core;
 using Google.Protobuf;
+using System.Net.NetworkInformation;
 
 namespace Demo
 {
@@ -30,10 +31,9 @@ namespace Demo
 
         public async Task RouteChat()
         {
-            strRpcMessage = "";
             try
             {
-                Log("*** RouteChat");
+
                 using (var call = client.RouteChat())
                 {
                     var responseReaderTask = Task.Run(async () =>
@@ -41,47 +41,85 @@ namespace Demo
                         while (await call.ResponseStream.MoveNext())
                         {
                             var note = call.ResponseStream.Current;
-                            Log("Got Message:" + note.Datasend.ToStringUtf8());
-                            strRpcMessage = note.Datasend.ToStringUtf8();
+                            //Log("Got message {0}", note.Datasend.ToStringUtf8());
+                            strRpcMessage = string.Format("{0}", note.Datasend.ToStringUtf8());
                         }
                     });
 
                     string strTemp = "";
-                    FileStream fs = new FileStream("test.txt", FileMode.Open);
-                    StreamReader sr = new StreamReader(fs);
+                    //FileStream fs = new FileStream("CloudPoint.txt", FileMode.Open);
+                    //StreamReader sr = new StreamReader(fs);
                     RouteNote noteSend = new RouteNote();
-                    //while (() != null)
+
+                    int total = 0;
+                    int iCpyCunt = 0;
+                    int index = 0;
+                    int size = 4096;
+
+                    //byte[] buffer = new byte[1024];
+                    //fs.Read(buffer, index, 4096);
+                    byte[] buffer = System.IO.File.ReadAllBytes("CloudPoint.txt");
+                    total = buffer.Length;
+
+                    while (total >0)
+                    {
+                        byte[] bufWrite;
+                        if (total > size)
+                        {
+                            iCpyCunt = size;
+       
+                        }
+                        else
+                        {
+                            iCpyCunt = total;
+                            
+                        }
+
+                        bufWrite = new byte[iCpyCunt];
+                        Array.Copy(buffer, index,bufWrite,0,iCpyCunt);
+                        strTemp = Encoding.UTF8.GetString(bufWrite);
+                        noteSend.Datasend = ByteString.CopyFromUtf8(strTemp);
+                        noteSend.Size = strTemp.Length;
+                        await call.RequestStream.WriteAsync(noteSend);
+                        total -= iCpyCunt;
+                        index += iCpyCunt;
+                    }
+
+
+
+                    //while ((strTemp = sr.ReadLine()) != null)
                     //{
-                    strTemp = sr.ReadToEnd();
-                    noteSend.Datasend = ByteString.CopyFromUtf8(strTemp);
-                    noteSend.Size = strTemp.Length;
-                    await call.RequestStream.WriteAsync(noteSend);
+                    //    noteSend.Datasend = ByteString.CopyFromUtf8(strTemp);
+                    //    noteSend.Size = strTemp.Length;
+                    //    await call.RequestStream.WriteAsync(noteSend);
+                    //}
                     await call.RequestStream.CompleteAsync();
                     await responseReaderTask;
-
-                    Log("Finished RouteChat");
                 }
+
+                
             }
             catch (RpcException e)
             {
-                Log("RPC failed");
+                //Log("RPC failed", e);
                 throw;
             }
-        }
-
-
-
-        private void Log(string s)
-        {
-            System.Diagnostics.Debug.WriteLine(s);
         }
 
     }
     class clsAlgorithm_Server
     {
+        public delegate void OnMessageCallback(string message);
+        public event OnMessageCallback Callback;
         private string rpcMsg;
+
         public void StartOneRpc(ref string GetMsg)
         {
+            if(Ping() == false)
+            {
+                Callback("can't connect server");
+            }
+            //Callback("can't connected");
             System.Threading.Thread th = new System.Threading.Thread(new System.Threading.ThreadStart(RpcRun));
             th.IsBackground = true;
             th.Start();
@@ -96,15 +134,35 @@ namespace Demo
 
         private void RpcRun()
         {
-
-            var channel = new Channel("192.168.50.24:50051", ChannelCredentials.Insecure);
-            var client = new RouteGuideClient(new RouteGuide.RouteGuideClient(channel));
+            string strConString;
+            
+            strConString = string.Format("{0}:{1}", ReadIniSettings.ReadIni.objIniValue.iniServer.Ip, ReadIniSettings.ReadIni.objIniValue.iniServer.Port);
+            //var channel = new Channel("192.168.50.30:50051", ChannelCredentials.Insecure);
+            var channel = new Channel(strConString, ChannelCredentials.Insecure);
+             var objclient = new RouteGuideClient(new RouteGuide.RouteGuideClient(channel));
             // Send and receive some notes.
-            client.RouteChat().Wait();
+            objclient.RouteChat().Wait();
 
             channel.ShutdownAsync().Wait();
 
-            rpcMsg = client.RPC_Message;
+            rpcMsg = objclient.RPC_Message;
+        }
+
+        private bool Ping()
+        {
+            bool bStatue = false;
+            Ping ping = new Ping();
+            PingReply pingReply = ping.Send(ReadIniSettings.ReadIni.objIniValue.iniServer.Ip);
+            if (pingReply.Status == IPStatus.Success)
+            {
+                bStatue = true;
+            }
+            else
+            {
+                bStatue = false;
+            }
+
+            return bStatue;
         }
     }
 }

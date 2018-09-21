@@ -41,17 +41,13 @@ namespace Demo
         {
             objTcpInfo.ipAddress = IpAddress;
             objTcpInfo.port = Port;
-            thTcpServer = new Thread(new ThreadStart(TcpServer));
-            thTcpServer.IsBackground = true;
+
 
         }
 
         public clsRobotTcp(RobotTcpInfo tcpInfo)
         {
             objTcpInfo = tcpInfo;
-
-            thTcpServer = new Thread(new ThreadStart(TcpServer));
-            thTcpServer.IsBackground = true;
 
         }
 
@@ -65,6 +61,9 @@ namespace Demo
         public bool StartServer()
         {
             if (PingClient() == false) return false;
+            thTcpServer = new Thread(new ThreadStart(TcpServer));
+            thTcpServer.IsBackground = true;
+
             if (thTcpServer == null) return false;
             if (objTcpInfo.ipAddress.Length < 7 || objTcpInfo.port < 1) return false;
 
@@ -106,21 +105,44 @@ namespace Demo
         }
 
         bool PingClient()
-
         {
-            bool bStatue;
+            string ip;
+            bool bStatue = true;
             Ping ping = new Ping();
-            Callback("Ping ip:" + objTcpInfo.ipAddress);
-            PingReply pingReply = ping.Send(objTcpInfo.ipAddress);
-            if (pingReply.Status == IPStatus.Success)
+            if(ReadIniSettings.ReadIni.objIniValue.iniRobot.Ip == null)
             {
-                bStatue = true;
-                Callback("Ping ip:" + objTcpInfo.ipAddress + "OK");
+                ip = objTcpInfo.ipAddress;
             }
             else
             {
-                bStatue = false;
-                Callback("Ping ip:" + objTcpInfo.ipAddress + "NG");
+                ip = ReadIniSettings.ReadIni.objIniValue.iniRobot.Ip;
+            }
+
+            Callback("start Ping robot IP:" + ip + "   5s");
+            DateTime dt = DateTime.Now.AddSeconds(1);
+            while (dt > DateTime.Now)
+            {
+                try
+                {
+                    PingReply pingReply = ping.Send(ip);
+                    if (pingReply.Status == IPStatus.Success)
+                    {
+                        bStatue = true;
+                        Callback("Ping ip:" + objTcpInfo.ipAddress + " OK");
+                        break;
+                    }
+                    else
+                    {
+                        bStatue = false;
+                        Callback("Ping ip:" + objTcpInfo.ipAddress + " NG");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Callback(ex.Message);
+                    bStatue = false;
+                    break;
+                }
             }
 
             return bStatue;

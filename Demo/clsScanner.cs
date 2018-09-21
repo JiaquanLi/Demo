@@ -16,16 +16,19 @@ namespace Demo
 {
     class clsScanner
     {
+        public delegate void OnMessageCallback(string message);
+        public static event OnMessageCallback Callback;
+
         GoSystem system;
         GoDataSet dataSet;
         GoSensor sensor;
 
         private const int port = 1000;
         private const string ip = "192.168.1.13";
-        private const string strFileSave = "D:\\CloudPoint.txt";
+        private const string strFileSave = "CloudPoint.txt";
 
-        double dSpeed = ReadIni.objIniValue.iniScanner.speed;//365 / 5;   //单位：mm      5910/87
-        double dTime = ReadIni.objIniValue.iniScanner.frequency;//0.01;  //单位：s
+        //double dSpeed = ReadIni.objIniValue.iniScanner.speed;//365 / 5;   //单位：mm      5910/87
+        //double dTime = ReadIni.objIniValue.iniScanner.frequency;//0.01;  //单位：s
         double offset = 0;   //-41.0; // mm
         private double length = 0;
 
@@ -55,6 +58,9 @@ namespace Demo
         }
         public clsScanner()
         {
+            Callback("start connect scanner");
+            KApiLib.Construct();
+            GoSdkLib.Construct();
             system = new GoSystem();
             KIpAddress ipAddress = KIpAddress.Parse(ip);
 
@@ -65,10 +71,12 @@ namespace Demo
             }
             catch (Exception ex)
             {
+                Callback("scanner connect failed");
                 return;
             }
 
             sensor.Connect();
+            Callback("scanner connected.");
         }
         public void StartGetPoint()
         {
@@ -114,7 +122,7 @@ namespace Demo
                         {
                             StreamWriter write = new StreamWriter(strFileSave, true);
 
-                            GoProfilePointCloudMsg profileMsg = (GoProfilePointCloudMsg)dataObj;
+                            GoProfileMsg profileMsg = (GoProfileMsg)dataObj;
                             Console.WriteLine("  Profile Message batch count: {0}", profileMsg.Count);
                             for (UInt32 k = 0; k < profileMsg.Count; ++k)
                             {
@@ -147,7 +155,7 @@ namespace Demo
                                             length_incr = false;
                                         }
 
-                                        double real_y = offset + (length - 1) * dSpeed * dTime;
+                                        double real_y = offset + (length - 1) * ReadIni.objIniValue.iniScanner.speed * ReadIni.objIniValue.iniScanner.frequency;
                                         write.WriteLine(real_x + " " + real_y + " " + real_z);
 
                                     }

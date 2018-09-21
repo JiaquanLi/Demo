@@ -23,6 +23,13 @@ namespace Demo
             {
                 ReadIniSettings.ReadIni.objIniValue.iniScanner.frequency = double.Parse(tb_fre.Text);
                 ReadIniSettings.ReadIni.objIniValue.iniScanner.speed = double.Parse(tb_speed.Text);
+                ReadIniSettings.ReadIni.objIniValue.iniScanner.Ip = tb_scannerip.Text;
+
+                ReadIniSettings.ReadIni.objIniValue.iniRobot.Ip = tb_robotip.Text;
+                ReadIniSettings.ReadIni.objIniValue.iniRobot.Port = tb_RobotPort.Text;
+
+                ReadIniSettings.ReadIni.objIniValue.iniServer.Port = tb_ServerPort.Text;
+                ReadIniSettings.ReadIni.objIniValue.iniServer.Ip = tb_ServerIp.Text;
             }
             catch(Exception ex)
             {
@@ -43,7 +50,15 @@ namespace Demo
         {
             tb_speed.Text = ReadIniSettings.ReadIni.objIniValue.iniScanner.speed.ToString();
             tb_fre.Text = ReadIniSettings.ReadIni.objIniValue.iniScanner.frequency.ToString();
-            
+            tb_scannerip.Text = ReadIniSettings.ReadIni.objIniValue.iniScanner.Ip;
+
+            tb_robotip.Text = ReadIniSettings.ReadIni.objIniValue.iniRobot.Ip;
+            tb_RobotPort.Text = ReadIniSettings.ReadIni.objIniValue.iniRobot.Port;
+
+            tb_ServerIp.Text = ReadIniSettings.ReadIni.objIniValue.iniServer.Ip;
+            tb_ServerPort.Text = ReadIniSettings.ReadIni.objIniValue.iniServer.Port;
+
+
         }
     }
 }
