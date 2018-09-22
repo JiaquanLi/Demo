@@ -33,21 +33,25 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_rev = new System.Windows.Forms.Label();
             this.lbl_pjName = new System.Windows.Forms.Label();
+            this.btn_Stop = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb_debug = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_Stop = new System.Windows.Forms.Button();
+            this.pb_image = new System.Windows.Forms.PictureBox();
+            this.groupBox1.SuspendLayout();
             this.信息.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_image)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pb_image);
             this.groupBox1.Location = new System.Drawing.Point(5, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(604, 391);
@@ -85,7 +89,7 @@
             this.lbl_rev.Name = "lbl_rev";
             this.lbl_rev.Size = new System.Drawing.Size(141, 34);
             this.lbl_rev.TabIndex = 0;
-            this.lbl_rev.Text = "版本信息";
+            this.lbl_rev.Text = "版本信息：V0.01";
             this.lbl_rev.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_pjName
@@ -96,8 +100,19 @@
             this.lbl_pjName.Name = "lbl_pjName";
             this.lbl_pjName.Size = new System.Drawing.Size(141, 34);
             this.lbl_pjName.TabIndex = 0;
-            this.lbl_pjName.Text = "项目名称";
+            this.lbl_pjName.Text = "点云分析";
             this.lbl_pjName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_Stop
+            // 
+            this.btn_Stop.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Stop.Location = new System.Drawing.Point(46, 313);
+            this.btn_Stop.Name = "btn_Stop";
+            this.btn_Stop.Size = new System.Drawing.Size(120, 42);
+            this.btn_Stop.TabIndex = 1;
+            this.btn_Stop.Text = "计算";
+            this.btn_Stop.UseVisualStyleBackColor = true;
+            this.btn_Stop.Click += new System.EventHandler(this.btn_Stop_Click);
             // 
             // btn_start
             // 
@@ -123,7 +138,8 @@
             // rtb_debug
             // 
             this.rtb_debug.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.rtb_debug.ForeColor = System.Drawing.Color.Lime;
+            this.rtb_debug.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtb_debug.ForeColor = System.Drawing.Color.Gold;
             this.rtb_debug.Location = new System.Drawing.Point(9, 20);
             this.rtb_debug.Name = "rtb_debug";
             this.rtb_debug.Size = new System.Drawing.Size(824, 166);
@@ -154,16 +170,14 @@
             this.设置ToolStripMenuItem.Text = "设置";
             this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
             // 
-            // btn_Stop
+            // pb_image
             // 
-            this.btn_Stop.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Stop.Location = new System.Drawing.Point(46, 313);
-            this.btn_Stop.Name = "btn_Stop";
-            this.btn_Stop.Size = new System.Drawing.Size(120, 42);
-            this.btn_Stop.TabIndex = 1;
-            this.btn_Stop.Text = "结束";
-            this.btn_Stop.UseVisualStyleBackColor = true;
-            this.btn_Stop.Click += new System.EventHandler(this.btn_Stop_Click);
+            this.pb_image.Location = new System.Drawing.Point(9, 20);
+            this.pb_image.Name = "pb_image";
+            this.pb_image.Size = new System.Drawing.Size(589, 355);
+            this.pb_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_image.TabIndex = 0;
+            this.pb_image.TabStop = false;
             // 
             // frm_Main
             // 
@@ -179,11 +193,13 @@
             this.Name = "frm_Main";
             this.Text = "示例程序";
             this.Load += new System.EventHandler(this.frm_Main_Load);
+            this.groupBox1.ResumeLayout(false);
             this.信息.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.Button btn_Stop;
+        private System.Windows.Forms.PictureBox pb_image;
     }
 }
 

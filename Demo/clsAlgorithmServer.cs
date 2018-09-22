@@ -54,7 +54,7 @@ namespace Demo
                     int total = 0;
                     int iCpyCunt = 0;
                     int index = 0;
-                    int size = 4096;
+                    int size = 4096*10;
 
                     //byte[] buffer = new byte[1024];
                     //fs.Read(buffer, index, 4096);
@@ -118,8 +118,9 @@ namespace Demo
             if(Ping() == false)
             {
                 Callback("can't connect server");
+                return;
             }
-            //Callback("can't connected");
+            Callback("Ping Server: Statue ok ...");
             System.Threading.Thread th = new System.Threading.Thread(new System.Threading.ThreadStart(RpcRun));
             th.IsBackground = true;
             th.Start();

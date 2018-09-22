@@ -37,6 +37,16 @@ namespace Demo
             //    InitialHal();
             //    return;
             //}
+            //if(pb_image.Image != null)
+            try
+            {
+                pb_image.Visible = false;
+                pb_image.Image.Dispose();
+            }
+            catch(Exception ex)
+            {
+
+            }
             btn_start.Enabled = false;
             objScanner.StartGetPoint();
             //double[,] mtric = new double[4, 4] { { }, { }, { }, { } };
@@ -48,17 +58,29 @@ namespace Demo
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             string strRpcMsg = "";
+            btn_Stop.Enabled = false;
+            pb_image.Load("img.PNG");
+            Application.DoEvents();
             objScanner.StopGetPoint();
-            btn_start.Enabled = true;
+            
             System.Threading.Thread.Sleep(100);
+            Application.DoEvents();
             objAlgorithm.StartOneRpc(ref strRpcMsg);
             OnLog("Get Matric: " + strRpcMsg);
+
+            btn_start.Enabled = true;
+            btn_Stop.Enabled = true;
+
+            pb_image.Visible = true;
         }
         private void OnLog(string strLog)
         {
             if (strLog.EndsWith("\r\n") == false) strLog += "\r\n";
             strLog = string.Format("{0}: {1}", System.DateTime.Now, strLog);
             rtb_debug.AppendText(strLog);
+            rtb_debug.SelectionStart = rtb_debug.Text.Length;
+            rtb_debug.ScrollToCaret();
+            Application.DoEvents();
         }
         
         private bool InitialHal()
@@ -66,8 +88,8 @@ namespace Demo
             bool bStatue;
 
             objAlgorithm = new  clsAlgorithm_Server();
-           
-            objXml = new clsXML();
+            objAlgorithm.Callback += new clsAlgorithm_Server.OnMessageCallback(OnLog);
+             objXml = new clsXML();
 
             //scanner
             try

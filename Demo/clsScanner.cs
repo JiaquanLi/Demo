@@ -86,7 +86,15 @@ namespace Demo
             system.EnableData(true);
             system.SetDataHandler(onData);
 
-            sensor.CopyFile("test.job", "_live.job");
+            try
+            {
+                sensor.CopyFile("test.job", "_live.job");
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("请检查相机连接状态");
+                return;
+            }
             system.Start();
 
         }
