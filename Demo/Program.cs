@@ -16,7 +16,7 @@ namespace Demo
         static void Main()
         {
             string strErr = "";
-            if(ReadIni.ReadAll(ref strErr) == false)
+            if (ReadIni.ReadAll(ref strErr) == false)
             {
                 MessageBox.Show(strErr);
             }

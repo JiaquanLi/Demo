@@ -11,7 +11,6 @@ using Lmi3d.GoSdk.Messages;
 using System.Runtime.InteropServices;
 using ReadIniSettings;
 
-
 namespace Demo
 {
     class clsScanner
@@ -35,8 +34,10 @@ namespace Demo
         public class DataContext
         {
             public Double xResolution;
+            public double yResolution;
             public Double zResolution;
             public Double xOffset;
+            public double yOffset;
             public Double zOffset;
         }
 
@@ -90,13 +91,12 @@ namespace Demo
             {
                 sensor.CopyFile("test.job", "_live.job");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("请检查相机连接状态");
                 return;
             }
             system.Start();
-
         }
         public void StopGetPoint()
         {
@@ -105,6 +105,8 @@ namespace Demo
 
         public void onData(KObject data)
         {
+            double yPoint = 1;
+            string strWrite = "";
             bool length_incr = true;
             GoDataSet dataSet = (GoDataSet)data;
             DataContext context = new DataContext();
@@ -125,6 +127,52 @@ namespace Demo
                             }
                         }
                         break;
+                    case GoDataMessageType.Surface:  // Surface
+                        {
+                            GoSurfaceMsg surfaceMsg = (GoSurfaceMsg)dataObj;
+                            long width = surfaceMsg.Width;
+                            long height = surfaceMsg.Length;
+                            long bufferSize = width * height;
+                            IntPtr bufferPointer = surfaceMsg.Data;
+
+                            short[] ranges = new short[bufferSize];
+                            Marshal.Copy(bufferPointer, ranges, 0, ranges.Length);
+
+                            context.xResolution = (double)surfaceMsg.XResolution / 1000000.0;
+                            context.zResolution = (double)surfaceMsg.ZResolution / 1000000.0;
+                            context.yResolution = (double)surfaceMsg.YResolution / 1000000.0;
+                            context.yOffset = (double)surfaceMsg.YOffset / 1000.0;
+                            context.xOffset = (double)surfaceMsg.XOffset / 1000.0;
+                            context.zOffset = (double)surfaceMsg.ZOffset / 1000.0;
+
+                            double phy_x;
+                            double phy_y;
+                            double phy_z;
+
+                            FileStream fs = new FileStream(strFileSave, FileMode.Create);
+                            StreamWriter sw = new StreamWriter(fs);
+
+                            for (int m = 0; m < height; m++)
+                            {
+                                for (int j = 0; j < width; j++)
+                                {
+                                    phy_z = ranges[m * width + j] * context.zResolution + context.zOffset;
+                                    if (/*phy_z > 20*/true)  //这个过滤阈值根据实际情况选取
+                                    {
+                                        phy_x = j * context.xResolution + context.xOffset;
+                                        phy_y = m * context.yResolution + context.yOffset;
+
+                                        strWrite = string.Format("{0} {1} {2}", phy_x, phy_y, phy_z);
+                                        sw.WriteLine(strWrite);
+                                    }
+                                }
+                            }
+                            sw.Flush();
+                            //关闭流
+                            sw.Close();
+                            fs.Close();
+                        }
+                        break;
 
                     case GoDataMessageType.Profile:
                         {
@@ -137,7 +185,7 @@ namespace Demo
                                 int validPointCount = 0;
                                 long profilePointCount = profileMsg.Width;
                                 Console.WriteLine("  Item[{0}]: Profile data ({1} points)", i, profileMsg.Width);
-                                context.xResolution = profileMsg.XResolution / 1000000.0;
+                                context.xResolution = (profileMsg.XResolution / 1000000.0);
                                 context.zResolution = profileMsg.ZResolution / 1000000.0;
                                 context.xOffset = profileMsg.XOffset / 1000.0;
                                 context.zOffset = profileMsg.ZOffset / 1000.0;
@@ -151,28 +199,31 @@ namespace Demo
                                     IntPtr incPtr = new IntPtr(pointsPtr.ToInt64() + array * structSize);
                                     points[array] = (GoPoints)Marshal.PtrToStructure(incPtr, typeof(GoPoints));
 
-                                    double real_x = -(context.xOffset + context.xResolution * points[array].x);
+                                    double real_x = (context.xOffset + context.xResolution * points[array].x);
                                     double real_z = (context.zOffset + context.zResolution * points[array].y);
 
-                                    //if (points[array].x != -32768 && real_z > -30.0)
-                                    if (real_z > -530)
+                                    if (length_incr == true)
                                     {
-                                        if (length_incr == true)
-                                        {
-                                            length++;
-                                            length_incr = false;
-                                        }
+                                        length += ReadIniSettings.ReadIni.objIniValue.iniScanner.step;
+                                        length_incr = false;
+                                    }
 
-                                        double real_y = offset + (length - 1) * ReadIni.objIniValue.iniScanner.speed * ReadIni.objIniValue.iniScanner.frequency;
-                                        write.WriteLine(real_x + " " + real_y + " " + real_z);
+                                    //if (points[array].x != -32768 && real_z > -30.0)
+                                    if (real_z > 20.0 && real_x > -500.0)
+                                    {
+                                        //if (length_incr == true)
+                                        //{
+                                        //    length++;
+                                        //    length_incr = false;
+                                        //}
 
+                                        //double real_y = offset + (length - 1) * ReadIni.objIniValue.iniScanner.speed * ReadIni.objIniValue.iniScanner.frequency;
+                                        write.WriteLine(real_x + " " + length + " " + real_z);
                                     }
                                 }
 
                                 write.Flush();
-
                             }
-
                             write.Close();
                         }
                         break;

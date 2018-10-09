@@ -5,13 +5,14 @@ using System.Runtime.InteropServices;
 
 namespace ReadIniSettings
 {
-     class ReadIni
+    class ReadIni
     {
         public struct IniScanner
         {
             public double speed;
             public double frequency;
             public string Ip;
+            public double step;
         }
 
         public struct IniRobot
@@ -133,7 +134,7 @@ namespace ReadIniSettings
         {
             string str_Res;
 
-            if(System.IO.File.Exists(strPath) == false)
+            if (System.IO.File.Exists(strPath) == false)
             {
                 strErr = "ÎÄ¼þ¶ªÊ§: " + strPath;
                 return false;
@@ -155,6 +156,14 @@ namespace ReadIniSettings
                 return false;
             }
             objIniValue.iniScanner.speed = double.Parse(str_Res);
+
+            str_Res = ReadPrivateProfileStringKey("Scanner", "step", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniScanner.step = double.Parse(str_Res);
 
             //Get and verify the master directory
             str_Res = ReadPrivateProfileStringKey("Scanner", "ip", strPath);
@@ -204,11 +213,11 @@ namespace ReadIniSettings
 
         public static void SetAll()
         {
-
             //Get and verify the master directory
-            WriteString("Scanner", "frequency", objIniValue.iniScanner.frequency.ToString(),strPath);
+            WriteString("Scanner", "frequency", objIniValue.iniScanner.frequency.ToString(), strPath);
             WriteString("Scanner", "speed", objIniValue.iniScanner.speed.ToString(), strPath);
             WriteString("Scanner", "ip", objIniValue.iniScanner.Ip.ToString(), strPath);
+			WriteString("Scanner", "step", objIniValue.iniScanner.step.ToString(), strPath);
 
             WriteString("Robot", "port", objIniValue.iniRobot.Port, strPath);
             WriteString("Robot", "ip", objIniValue.iniRobot.Ip, strPath);
@@ -216,8 +225,7 @@ namespace ReadIniSettings
             WriteString("Server", "port", objIniValue.iniServer.Port, strPath);
             WriteString("Server", "ip", objIniValue.iniServer.Ip, strPath);
 
-            return ;
+            return;
         }
-
     }
 }

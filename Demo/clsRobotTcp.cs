@@ -37,18 +37,15 @@ namespace Demo
             }
         }
 
-        public clsRobotTcp(string IpAddress,int Port)
+        public clsRobotTcp(string IpAddress, int Port)
         {
             objTcpInfo.ipAddress = IpAddress;
             objTcpInfo.port = Port;
-
-
         }
 
         public clsRobotTcp(RobotTcpInfo tcpInfo)
         {
-            objTcpInfo = tcpInfo;
-
+            //objTcpInfo = tcpInfo;
         }
 
         ~clsRobotTcp()
@@ -57,7 +54,6 @@ namespace Demo
             if (objTcpServer != null) objTcpServer.Stop();
         }
 
-
         public bool StartServer()
         {
             if (PingClient() == false) return false;
@@ -65,7 +61,7 @@ namespace Demo
             thTcpServer.IsBackground = true;
 
             if (thTcpServer == null) return false;
-            if (objTcpInfo.ipAddress.Length < 7 || objTcpInfo.port < 1) return false;
+            //if (objTcpInfo.ipAddress.Length < 7 || objTcpInfo.port < 1) return false;
 
             thTcpServer.Start();
             return true;
@@ -73,18 +69,20 @@ namespace Demo
         private void TcpServer()
         {
 
-            string strSend = "";
-            string strReceive = "";
-            IPAddress IP = IPAddress.Parse(objTcpInfo.ipAddress);
-            objTcpServer = new TcpListener(IP, objTcpInfo.port);
-            objTcpServer.Start();
+            int a = 0;
+
+            TcpListener server = null;
+            IPAddress IP = IPAddress.Parse("192.168.11.5");
+            server = new TcpListener(IP, 49152);
+            server.Start();
+            String strSend = null;
 
             byte[] bytes = new Byte[1024];
-            
-            while (bExit != true)
+            Socket handler;
+            while (true)
             {
-                Socket handler;
-                handler = objTcpServer.AcceptSocket();
+                String strReceive = null;
+                handler = server.AcceptSocket();
                 XmlDocument SendXML = new XmlDocument();
                 SendXML.PreserveWhitespace = true;
                 SendXML.Load("points.xml");
@@ -99,8 +97,6 @@ namespace Demo
                     Console.WriteLine("\n");
                     handler.Send(msg, 0, msg.Length, System.Net.Sockets.SocketFlags.None);
                 }
-
-                handler.Close();
             }
         }
 
@@ -109,7 +105,7 @@ namespace Demo
             string ip;
             bool bStatue = true;
             Ping ping = new Ping();
-            if(ReadIniSettings.ReadIni.objIniValue.iniRobot.Ip == null)
+            if (ReadIniSettings.ReadIni.objIniValue.iniRobot.Ip == null)
             {
                 ip = objTcpInfo.ipAddress;
             }
@@ -137,16 +133,14 @@ namespace Demo
                         Callback("Ping ip:" + objTcpInfo.ipAddress + " NG");
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Callback(ex.Message);
                     bStatue = false;
                     break;
                 }
             }
-
             return bStatue;
         }
-
     }
 }

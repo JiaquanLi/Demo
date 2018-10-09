@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
+
 namespace ConvertXML
 {
     class clsXML
     {
-
         public struct DataInfo
         {
             public string X;
@@ -32,7 +32,7 @@ namespace ConvertXML
         private const int DATALEN = 30;
         private DataInfo[] dataInfo;
 
-        public  DataInfo[] Data
+        public DataInfo[] Data
         {
             get
             {
@@ -59,13 +59,13 @@ namespace ConvertXML
             public static string E6 = "E6";
             public static string End = "}";
         }
-        public  bool WriteMyXML(string input_name, string strXmlFileName, int type_model)
+        public bool WriteMyXML(string input_name, string strXmlFileName, int type_model)
         {
             dataFile = input_name;
             string strErr = "";
             CreateInitData();
 
-            if (GetData(dataFile,ref strErr) == false)
+            if (GetData(dataFile, ref strErr) == false)
             {
                 return false;
             }
@@ -73,7 +73,7 @@ namespace ConvertXML
             XmlWriter(strXmlFileName, type_model);
             return true;
         }
-        private  void CreateInitData()
+        private void CreateInitData()
         {
             dataInfo = new DataInfo[DATALEN];
 
@@ -95,7 +95,7 @@ namespace ConvertXML
                 dataInfo[i].T = "0";
             }
         }
-        public  bool GetData(string fileName, ref string strErrMsg)
+        public bool GetData(string fileName, ref string strErrMsg)
         {
             string strTemp;
 
@@ -169,7 +169,7 @@ namespace ConvertXML
             fs.Close();
             return true;
         }
-        private  bool GetEachLineData(ref DataInfo data, string lineString)
+        private bool GetEachLineData(ref DataInfo data, string lineString)
         {
             string strTemp;
             string strValue;
@@ -233,7 +233,7 @@ namespace ConvertXML
 
             return true;
         }
-        private  string GetKeyValue(string strKey, string strLineString)
+        private string GetKeyValue(string strKey, string strLineString)
         {
             string strValue = "";
             int iPosS = 0;
@@ -258,7 +258,7 @@ namespace ConvertXML
 
             return strValue;
         }
-        private  void XmlWriter(string strXMLFileName, int type_model)
+        private void XmlWriter(string strXMLFileName, int type_model)
         {
             XmlDocument doc = new XmlDocument();
             XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
@@ -301,7 +301,7 @@ namespace ConvertXML
             doc.Save(strXMLFileName);
         }
 
-        public  void WritePoint(string x, string y, string strXMLFileName, int type_model)
+        public static void WritePoint(List<Demo.frm_Main.SCloutdPoint> lstPT, int type_model, string strXMLFileName)
         {
             XmlDocument doc = new XmlDocument();
             XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
@@ -312,18 +312,20 @@ namespace ConvertXML
 
             XmlElement eachValue = doc.CreateElement("Read");
             root.AppendChild(eachValue);
+            for (int cout = 0; cout < lstPT.Count; cout++)
+            {
+                string elmt = string.Format("xyzabc{0}", cout + 1);
+                XmlElement xyzabc = doc.CreateElement(elmt);
+                xyzabc.SetAttribute("X", lstPT[cout].X.ToString());
+                xyzabc.SetAttribute("Y", lstPT[cout].Y.ToString());
+                xyzabc.SetAttribute("Z", lstPT[cout].Z.ToString());
 
-            string elmt = string.Format("xyzabc{0}", 1);
-            XmlElement xyzabc = doc.CreateElement(elmt);
-            xyzabc.SetAttribute("X", x);
-            xyzabc.SetAttribute("Y", y);
-            xyzabc.SetAttribute("Z", "-1");
+                xyzabc.SetAttribute("A", lstPT[cout].A.ToString());
+                xyzabc.SetAttribute("B", lstPT[cout].B.ToString());
+                xyzabc.SetAttribute("C", lstPT[cout].C.ToString());
 
-            xyzabc.SetAttribute("A", "-141.57");
-            xyzabc.SetAttribute("B", "-4.37");
-            xyzabc.SetAttribute("C", "179.74");
-
-            eachValue.AppendChild(xyzabc);
+                eachValue.AppendChild(xyzabc);
+            }
 
             doc.Save(strXMLFileName);
         }

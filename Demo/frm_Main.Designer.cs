@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pb_image = new System.Windows.Forms.PictureBox();
             this.信息 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_rev = new System.Windows.Forms.Label();
@@ -40,13 +41,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pb_image = new System.Windows.Forms.PictureBox();
+            this.btn_templet = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_image)).BeginInit();
             this.信息.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_image)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -59,10 +60,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "图像";
             // 
+            // pb_image
+            // 
+            this.pb_image.Location = new System.Drawing.Point(9, 20);
+            this.pb_image.Name = "pb_image";
+            this.pb_image.Size = new System.Drawing.Size(589, 355);
+            this.pb_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_image.TabIndex = 0;
+            this.pb_image.TabStop = false;
+            // 
             // 信息
             // 
             this.信息.Controls.Add(this.groupBox2);
             this.信息.Controls.Add(this.btn_Stop);
+            this.信息.Controls.Add(this.btn_templet);
             this.信息.Controls.Add(this.btn_start);
             this.信息.Location = new System.Drawing.Point(650, 40);
             this.信息.Name = "信息";
@@ -84,7 +95,7 @@
             // lbl_rev
             // 
             this.lbl_rev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_rev.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_rev.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl_rev.Location = new System.Drawing.Point(18, 52);
             this.lbl_rev.Name = "lbl_rev";
             this.lbl_rev.Size = new System.Drawing.Size(141, 34);
@@ -95,7 +106,7 @@
             // lbl_pjName
             // 
             this.lbl_pjName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_pjName.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_pjName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl_pjName.Location = new System.Drawing.Point(18, 18);
             this.lbl_pjName.Name = "lbl_pjName";
             this.lbl_pjName.Size = new System.Drawing.Size(141, 34);
@@ -105,7 +116,7 @@
             // 
             // btn_Stop
             // 
-            this.btn_Stop.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Stop.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_Stop.Location = new System.Drawing.Point(46, 313);
             this.btn_Stop.Name = "btn_Stop";
             this.btn_Stop.Size = new System.Drawing.Size(120, 42);
@@ -116,8 +127,8 @@
             // 
             // btn_start
             // 
-            this.btn_start.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_start.Location = new System.Drawing.Point(46, 240);
+            this.btn_start.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_start.Location = new System.Drawing.Point(46, 251);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(120, 42);
             this.btn_start.TabIndex = 1;
@@ -138,7 +149,7 @@
             // rtb_debug
             // 
             this.rtb_debug.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.rtb_debug.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtb_debug.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rtb_debug.ForeColor = System.Drawing.Color.Gold;
             this.rtb_debug.Location = new System.Drawing.Point(9, 20);
             this.rtb_debug.Name = "rtb_debug";
@@ -170,14 +181,16 @@
             this.设置ToolStripMenuItem.Text = "设置";
             this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
             // 
-            // pb_image
+            // btn_templet
             // 
-            this.pb_image.Location = new System.Drawing.Point(9, 20);
-            this.pb_image.Name = "pb_image";
-            this.pb_image.Size = new System.Drawing.Size(589, 355);
-            this.pb_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_image.TabIndex = 0;
-            this.pb_image.TabStop = false;
+            this.btn_templet.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_templet.Location = new System.Drawing.Point(46, 148);
+            this.btn_templet.Name = "btn_templet";
+            this.btn_templet.Size = new System.Drawing.Size(120, 42);
+            this.btn_templet.TabIndex = 1;
+            this.btn_templet.Text = "建立模板";
+            this.btn_templet.UseVisualStyleBackColor = true;
+            this.btn_templet.Click += new System.EventHandler(this.btn_templet_Click);
             // 
             // frm_Main
             // 
@@ -194,12 +207,12 @@
             this.Text = "示例程序";
             this.Load += new System.EventHandler(this.frm_Main_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_image)).EndInit();
             this.信息.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,6 +233,7 @@
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.Button btn_Stop;
         private System.Windows.Forms.PictureBox pb_image;
+        private System.Windows.Forms.Button btn_templet;
     }
 }
 

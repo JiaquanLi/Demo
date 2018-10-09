@@ -31,12 +31,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_speed = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tb_scannerip = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tb_fre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tb_scannerip = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,6 +51,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tb_ServerPort = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tb_scannerstep = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -58,6 +60,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tb_scannerstep);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.tb_speed);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_scannerip);
@@ -73,7 +77,7 @@
             // 
             // tb_speed
             // 
-            this.tb_speed.Location = new System.Drawing.Point(78, 94);
+            this.tb_speed.Location = new System.Drawing.Point(78, 78);
             this.tb_speed.Name = "tb_speed";
             this.tb_speed.Size = new System.Drawing.Size(100, 21);
             this.tb_speed.TabIndex = 1;
@@ -81,15 +85,31 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 97);
+            this.label2.Location = new System.Drawing.Point(31, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 0;
             this.label2.Text = "速度：";
             // 
+            // tb_scannerip
+            // 
+            this.tb_scannerip.Location = new System.Drawing.Point(78, 22);
+            this.tb_scannerip.Name = "tb_scannerip";
+            this.tb_scannerip.Size = new System.Drawing.Size(100, 21);
+            this.tb_scannerip.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "IP：";
+            // 
             // tb_fre
             // 
-            this.tb_fre.Location = new System.Drawing.Point(78, 67);
+            this.tb_fre.Location = new System.Drawing.Point(78, 51);
             this.tb_fre.Name = "tb_fre";
             this.tb_fre.Size = new System.Drawing.Size(100, 21);
             this.tb_fre.TabIndex = 1;
@@ -97,7 +117,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 70);
+            this.label1.Location = new System.Drawing.Point(31, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
@@ -122,22 +142,6 @@
             this.btn_cancel.Text = "取消";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "IP：";
-            // 
-            // tb_scannerip
-            // 
-            this.tb_scannerip.Location = new System.Drawing.Point(78, 36);
-            this.tb_scannerip.Name = "tb_scannerip";
-            this.tb_scannerip.Size = new System.Drawing.Size(100, 21);
-            this.tb_scannerip.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -265,6 +269,22 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "端口：";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(31, 108);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Step：";
+            // 
+            // tb_scannerstep
+            // 
+            this.tb_scannerstep.Location = new System.Drawing.Point(78, 105);
+            this.tb_scannerstep.Name = "tb_scannerstep";
+            this.tb_scannerstep.Size = new System.Drawing.Size(100, 21);
+            this.tb_scannerstep.TabIndex = 1;
+            // 
             // frm_Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -313,5 +333,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_ServerPort;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tb_scannerstep;
+        private System.Windows.Forms.Label label10;
     }
 }
