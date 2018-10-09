@@ -30,32 +30,15 @@ namespace Routeguide {
   {
     static readonly string __ServiceName = "routeguide.RouteGuide";
 
-    static readonly grpc::Marshaller<global::Routeguide.Point> __Marshaller_routeguide_Point = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.Point.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Routeguide.Feature> __Marshaller_routeguide_Feature = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.Feature.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Routeguide.Rectangle> __Marshaller_routeguide_Rectangle = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.Rectangle.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Routeguide.RouteSummary> __Marshaller_routeguide_RouteSummary = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.RouteSummary.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Routeguide.RouteNote> __Marshaller_routeguide_RouteNote = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.RouteNote.Parser.ParseFrom);
-
-    static readonly grpc::Method<global::Routeguide.Point, global::Routeguide.Feature> __Method_GetFeature = new grpc::Method<global::Routeguide.Point, global::Routeguide.Feature>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetFeature",
-        __Marshaller_routeguide_Point,
-        __Marshaller_routeguide_Feature);
-
-    static readonly grpc::Method<global::Routeguide.Rectangle, global::Routeguide.Feature> __Method_ListFeatures = new grpc::Method<global::Routeguide.Rectangle, global::Routeguide.Feature>(
-        grpc::MethodType.ServerStreaming,
-        __ServiceName,
-        "ListFeatures",
-        __Marshaller_routeguide_Rectangle,
-        __Marshaller_routeguide_Feature);
-
-    static readonly grpc::Method<global::Routeguide.Point, global::Routeguide.RouteSummary> __Method_RecordRoute = new grpc::Method<global::Routeguide.Point, global::Routeguide.RouteSummary>(
-        grpc::MethodType.ClientStreaming,
-        __ServiceName,
-        "RecordRoute",
-        __Marshaller_routeguide_Point,
-        __Marshaller_routeguide_RouteSummary);
+    static readonly grpc::Marshaller<global::Routeguide.TempletFileRequest> __Marshaller_routeguide_TempletFileRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.TempletFileRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.TempletFileReply> __Marshaller_routeguide_TempletFileReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.TempletFileReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.IcpMaxIterationsRequest> __Marshaller_routeguide_IcpMaxIterationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.IcpMaxIterationsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.IcpMaxIterationsReply> __Marshaller_routeguide_IcpMaxIterationsReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.IcpMaxIterationsReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.ServerInfoRequest> __Marshaller_routeguide_ServerInfoRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.ServerInfoRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.ServerInfoReply> __Marshaller_routeguide_ServerInfoReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.ServerInfoReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.LisenceInfoRequest> __Marshaller_routeguide_LisenceInfoRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.LisenceInfoRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Routeguide.LisenceInfoReply> __Marshaller_routeguide_LisenceInfoReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.LisenceInfoReply.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Routeguide.RouteNote, global::Routeguide.RouteNote> __Method_RouteChat = new grpc::Method<global::Routeguide.RouteNote, global::Routeguide.RouteNote>(
         grpc::MethodType.DuplexStreaming,
@@ -63,6 +46,34 @@ namespace Routeguide {
         "RouteChat",
         __Marshaller_routeguide_RouteNote,
         __Marshaller_routeguide_RouteNote);
+
+    static readonly grpc::Method<global::Routeguide.TempletFileRequest, global::Routeguide.TempletFileReply> __Method_SetIcpTemplet = new grpc::Method<global::Routeguide.TempletFileRequest, global::Routeguide.TempletFileReply>(
+        grpc::MethodType.ClientStreaming,
+        __ServiceName,
+        "SetIcpTemplet",
+        __Marshaller_routeguide_TempletFileRequest,
+        __Marshaller_routeguide_TempletFileReply);
+
+    static readonly grpc::Method<global::Routeguide.IcpMaxIterationsRequest, global::Routeguide.IcpMaxIterationsReply> __Method_SetIcpMaxIterations = new grpc::Method<global::Routeguide.IcpMaxIterationsRequest, global::Routeguide.IcpMaxIterationsReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SetIcpMaxIterations",
+        __Marshaller_routeguide_IcpMaxIterationsRequest,
+        __Marshaller_routeguide_IcpMaxIterationsReply);
+
+    static readonly grpc::Method<global::Routeguide.ServerInfoRequest, global::Routeguide.ServerInfoReply> __Method_CheckServer = new grpc::Method<global::Routeguide.ServerInfoRequest, global::Routeguide.ServerInfoReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CheckServer",
+        __Marshaller_routeguide_ServerInfoRequest,
+        __Marshaller_routeguide_ServerInfoReply);
+
+    static readonly grpc::Method<global::Routeguide.LisenceInfoRequest, global::Routeguide.LisenceInfoReply> __Method_CheckLisence = new grpc::Method<global::Routeguide.LisenceInfoRequest, global::Routeguide.LisenceInfoReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CheckLisence",
+        __Marshaller_routeguide_LisenceInfoRequest,
+        __Marshaller_routeguide_LisenceInfoReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -74,53 +85,6 @@ namespace Routeguide {
     public abstract partial class RouteGuideBase
     {
       /// <summary>
-      /// A simple RPC.
-      ///
-      /// Obtains the feature at a given position.
-      ///
-      /// A feature with an empty name is returned if there's no feature at the given
-      /// position.
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::Routeguide.Feature> GetFeature(global::Routeguide.Point request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// A server-to-client streaming RPC.
-      ///
-      /// Obtains the Features available within the given Rectangle.  Results are
-      /// streamed rather than returned at once (e.g. in a response message with a
-      /// repeated field), as the rectangle may cover a large area and contain a
-      /// huge number of features.
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="responseStream">Used for sending responses back to the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>A task indicating completion of the handler.</returns>
-      public virtual global::System.Threading.Tasks.Task ListFeatures(global::Routeguide.Rectangle request, grpc::IServerStreamWriter<global::Routeguide.Feature> responseStream, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// A client-to-server streaming RPC.
-      ///
-      /// Accepts a stream of Points on a route being traversed, returning a
-      /// RouteSummary when traversal is completed.
-      /// </summary>
-      /// <param name="requestStream">Used for reading requests from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::Routeguide.RouteSummary> RecordRoute(grpc::IAsyncStreamReader<global::Routeguide.Point> requestStream, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
       /// A Bidirectional streaming RPC.
       ///
       /// Accepts a stream of RouteNotes sent while a route is being traversed,
@@ -131,6 +95,39 @@ namespace Routeguide {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>A task indicating completion of the handler.</returns>
       public virtual global::System.Threading.Tasks.Task RouteChat(grpc::IAsyncStreamReader<global::Routeguide.RouteNote> requestStream, grpc::IServerStreamWriter<global::Routeguide.RouteNote> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// *****************ICP function start************************
+      ///Get templet file from Client
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Routeguide.TempletFileReply> SetIcpTemplet(grpc::IAsyncStreamReader<global::Routeguide.TempletFileRequest> requestStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///set MaximumIterations
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Routeguide.IcpMaxIterationsReply> SetIcpMaxIterations(global::Routeguide.IcpMaxIterationsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Routeguide.ServerInfoReply> CheckServer(global::Routeguide.ServerInfoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Routeguide.LisenceInfoReply> CheckLisence(global::Routeguide.LisenceInfoRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -161,128 +158,6 @@ namespace Routeguide {
       }
 
       /// <summary>
-      /// A simple RPC.
-      ///
-      /// Obtains the feature at a given position.
-      ///
-      /// A feature with an empty name is returned if there's no feature at the given
-      /// position.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::Routeguide.Feature GetFeature(global::Routeguide.Point request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetFeature(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// A simple RPC.
-      ///
-      /// Obtains the feature at a given position.
-      ///
-      /// A feature with an empty name is returned if there's no feature at the given
-      /// position.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::Routeguide.Feature GetFeature(global::Routeguide.Point request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetFeature, null, options, request);
-      }
-      /// <summary>
-      /// A simple RPC.
-      ///
-      /// Obtains the feature at a given position.
-      ///
-      /// A feature with an empty name is returned if there's no feature at the given
-      /// position.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Routeguide.Feature> GetFeatureAsync(global::Routeguide.Point request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetFeatureAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// A simple RPC.
-      ///
-      /// Obtains the feature at a given position.
-      ///
-      /// A feature with an empty name is returned if there's no feature at the given
-      /// position.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Routeguide.Feature> GetFeatureAsync(global::Routeguide.Point request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetFeature, null, options, request);
-      }
-      /// <summary>
-      /// A server-to-client streaming RPC.
-      ///
-      /// Obtains the Features available within the given Rectangle.  Results are
-      /// streamed rather than returned at once (e.g. in a response message with a
-      /// repeated field), as the rectangle may cover a large area and contain a
-      /// huge number of features.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncServerStreamingCall<global::Routeguide.Feature> ListFeatures(global::Routeguide.Rectangle request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return ListFeatures(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// A server-to-client streaming RPC.
-      ///
-      /// Obtains the Features available within the given Rectangle.  Results are
-      /// streamed rather than returned at once (e.g. in a response message with a
-      /// repeated field), as the rectangle may cover a large area and contain a
-      /// huge number of features.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncServerStreamingCall<global::Routeguide.Feature> ListFeatures(global::Routeguide.Rectangle request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncServerStreamingCall(__Method_ListFeatures, null, options, request);
-      }
-      /// <summary>
-      /// A client-to-server streaming RPC.
-      ///
-      /// Accepts a stream of Points on a route being traversed, returning a
-      /// RouteSummary when traversal is completed.
-      /// </summary>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::Routeguide.Point, global::Routeguide.RouteSummary> RecordRoute(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return RecordRoute(new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// A client-to-server streaming RPC.
-      ///
-      /// Accepts a stream of Points on a route being traversed, returning a
-      /// RouteSummary when traversal is completed.
-      /// </summary>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::Routeguide.Point, global::Routeguide.RouteSummary> RecordRoute(grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncClientStreamingCall(__Method_RecordRoute, null, options);
-      }
-      /// <summary>
       /// A Bidirectional streaming RPC.
       ///
       /// Accepts a stream of RouteNotes sent while a route is being traversed,
@@ -308,6 +183,104 @@ namespace Routeguide {
       {
         return CallInvoker.AsyncDuplexStreamingCall(__Method_RouteChat, null, options);
       }
+      /// <summary>
+      /// *****************ICP function start************************
+      ///Get templet file from Client
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncClientStreamingCall<global::Routeguide.TempletFileRequest, global::Routeguide.TempletFileReply> SetIcpTemplet(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetIcpTemplet(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// *****************ICP function start************************
+      ///Get templet file from Client
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncClientStreamingCall<global::Routeguide.TempletFileRequest, global::Routeguide.TempletFileReply> SetIcpTemplet(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncClientStreamingCall(__Method_SetIcpTemplet, null, options);
+      }
+      /// <summary>
+      ///set MaximumIterations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Routeguide.IcpMaxIterationsReply SetIcpMaxIterations(global::Routeguide.IcpMaxIterationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetIcpMaxIterations(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///set MaximumIterations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Routeguide.IcpMaxIterationsReply SetIcpMaxIterations(global::Routeguide.IcpMaxIterationsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetIcpMaxIterations, null, options, request);
+      }
+      /// <summary>
+      ///set MaximumIterations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Routeguide.IcpMaxIterationsReply> SetIcpMaxIterationsAsync(global::Routeguide.IcpMaxIterationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetIcpMaxIterationsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///set MaximumIterations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Routeguide.IcpMaxIterationsReply> SetIcpMaxIterationsAsync(global::Routeguide.IcpMaxIterationsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetIcpMaxIterations, null, options, request);
+      }
+      public virtual global::Routeguide.ServerInfoReply CheckServer(global::Routeguide.ServerInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CheckServer(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Routeguide.ServerInfoReply CheckServer(global::Routeguide.ServerInfoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CheckServer, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Routeguide.ServerInfoReply> CheckServerAsync(global::Routeguide.ServerInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CheckServerAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Routeguide.ServerInfoReply> CheckServerAsync(global::Routeguide.ServerInfoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CheckServer, null, options, request);
+      }
+      public virtual global::Routeguide.LisenceInfoReply CheckLisence(global::Routeguide.LisenceInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CheckLisence(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Routeguide.LisenceInfoReply CheckLisence(global::Routeguide.LisenceInfoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CheckLisence, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Routeguide.LisenceInfoReply> CheckLisenceAsync(global::Routeguide.LisenceInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CheckLisenceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Routeguide.LisenceInfoReply> CheckLisenceAsync(global::Routeguide.LisenceInfoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CheckLisence, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override RouteGuideClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -320,10 +293,11 @@ namespace Routeguide {
     public static grpc::ServerServiceDefinition BindService(RouteGuideBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetFeature, serviceImpl.GetFeature)
-          .AddMethod(__Method_ListFeatures, serviceImpl.ListFeatures)
-          .AddMethod(__Method_RecordRoute, serviceImpl.RecordRoute)
-          .AddMethod(__Method_RouteChat, serviceImpl.RouteChat).Build();
+          .AddMethod(__Method_RouteChat, serviceImpl.RouteChat)
+          .AddMethod(__Method_SetIcpTemplet, serviceImpl.SetIcpTemplet)
+          .AddMethod(__Method_SetIcpMaxIterations, serviceImpl.SetIcpMaxIterations)
+          .AddMethod(__Method_CheckServer, serviceImpl.CheckServer)
+          .AddMethod(__Method_CheckLisence, serviceImpl.CheckLisence).Build();
     }
 
   }

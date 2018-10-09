@@ -113,6 +113,22 @@ namespace Demo
         public event OnMessageCallback Callback;
         private string rpcMsg;
 
+
+        public void SetIcpMaxIte()
+        {
+            Channel channel = new Channel("192.168.50.55:50051", ChannelCredentials.Insecure);
+
+            var client = new RouteGuide.RouteGuideClient(channel);
+
+            var reply = client.SetIcpMaxIterations(new IcpMaxIterationsRequest { Maxiterations = 5});
+
+            channel.ShutdownAsync().Wait();
+
+            if(reply.Retsts == false)
+            {
+                System.Windows.Forms.MessageBox.Show("rpc return fail");
+            }
+        }
         public void StartOneRpc(ref string GetMsg)
         {
             if(Ping() == false)

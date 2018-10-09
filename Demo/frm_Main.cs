@@ -32,6 +32,7 @@ namespace Demo
         }
         private void btn_start_Click(object sender, EventArgs e)
         {
+
             //if(bInitHal == false)
             //{
             //    InitialHal();
@@ -131,6 +132,16 @@ namespace Demo
 
         private void CreateArryFromStr(string str)
         {
+
+        }
+
+        private void RpcExample()
+        {
+            string strRpcMsg = "";
+            objAlgorithm.SetIcpMaxIte();
+
+            objAlgorithm.StartOneRpc(ref strRpcMsg);
+            OnLog("Get Matric: " + strRpcMsg);
 
         }
 
