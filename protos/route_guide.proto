@@ -1,0 +1,89 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "RouteGuideProto";
+option objc_class_prefix = "RTG";
+
+package routeguide;
+
+// Interface exported by the server.
+service RouteGuide {
+  
+  // A Bidirectional streaming RPC.
+  //
+  // Accepts a stream of RouteNotes sent while a route is being traversed,
+  // while receiving other RouteNotes (e.g. from other users).
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+
+// *****************ICP function start************************
+  //Get templet file from Client
+  rpc SetIcpTemplet(stream TempletFileRequest) returns (TempletFileReply) {}
+  //set MaximumIterations
+  rpc SetIcpMaxIterations(IcpMaxIterationsRequest) returns (IcpMaxIterationsReply) {}
+
+
+  rpc CheckServer(ServerInfoRequest) returns (ServerInfoReply) {}
+  rpc CheckLisence(LisenceInfoRequest) returns (LisenceInfoReply) {}
+}
+
+// A RouteNote is a message sent while at a given point.
+message RouteNote {
+	bytes datasend =1;
+	int32 size=2;
+}
+
+// A RouteNote is a message sent while at a given point.
+message TempletFileRequest {
+  bytes datasend =1;
+  int32 size=2;
+}
+// A RouteNote is a message sent while at a given point.
+message TempletFileReply {
+  bool retsts=1;
+}
+
+
+// A RouteNote is a message sent while at a given point.
+message IcpMaxIterationsRequest {
+  int32 maxiterations=1;
+}
+// A RouteNote is a message sent while at a given point.
+message IcpMaxIterationsReply {
+  bool retsts=1;
+}
+
+
+
+// Read Server information
+message ServerInfoReply{
+  string revsion =1;
+  string builddate = 2;
+  string complayname = 3;
+}
+message ServerInfoRequest{
+  string message = 1;
+}
+
+//Check Client license
+message LisenceInfoReply{
+  string message = 1;
+  bool statues = 2;
+}
+message LisenceInfoRequest{
+  string clientLicense = 1;
+}
