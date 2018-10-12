@@ -183,7 +183,7 @@ namespace Demo
 
             var client = new RouteGuide.RouteGuideClient(channel);
 
-            var reply = client.SetIcpMaxIterations(new IcpMaxIterationsRequest { Maxiterations = 50 });
+            var reply = client.SetIcpMaxIterations(new IcpMaxIterationsRequest { Maxiterations = maxIterations });
 
             channel.ShutdownAsync().Wait();
 
