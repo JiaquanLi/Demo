@@ -21,6 +21,13 @@ namespace ReadIniSettings
             public string Ip;
         }
 
+        //ICP Par
+        public struct ICP_Par
+        {
+            //pcl
+            public int maxIterationTimes;
+            public double filter;
+        }
         public struct IniServer
         {
             public string Port;
@@ -32,7 +39,10 @@ namespace ReadIniSettings
             public IniScanner iniScanner;
             public IniRobot iniRobot;
             public IniServer iniServer;
+            public ICP_Par iniIcp;
         }
+
+
 
         public static IniValue objIniValue = new IniValue();
         private static string strPath = System.Windows.Forms.Application.StartupPath + "\\" + "settings.ini";
@@ -208,6 +218,25 @@ namespace ReadIniSettings
             }
             objIniValue.iniServer.Ip = str_Res;
 
+            //icp
+            //Get and verify the master directory
+            str_Res = ReadPrivateProfileStringKey("ICP", "Iteration", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniIcp.maxIterationTimes = int.Parse(str_Res);
+
+            str_Res = ReadPrivateProfileStringKey("ICP", "Filter", strPath);
+            if (str_Res == "Error")
+            {
+                strErr = "Error #411: With MastersDir setting in INI file";
+                return false;
+            }
+            objIniValue.iniIcp.filter = double.Parse(str_Res);
+
+
             return true;
         }
 
@@ -224,6 +253,9 @@ namespace ReadIniSettings
 
             WriteString("Server", "port", objIniValue.iniServer.Port, strPath);
             WriteString("Server", "ip", objIniValue.iniServer.Ip, strPath);
+
+            WriteString("ICP", "Iteration", objIniValue.iniIcp.maxIterationTimes.ToString(), strPath);
+            WriteString("ICP", "Filter", objIniValue.iniIcp.filter.ToString(), strPath);
 
             return;
         }

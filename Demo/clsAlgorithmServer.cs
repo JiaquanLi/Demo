@@ -167,7 +167,7 @@ namespace Demo
         }
 
     }
-    class clsAlgorithm_Server
+    public class clsAlgorithm_Server
     {
         public delegate void OnMessageCallback(string message);
         public event OnMessageCallback Callback;
@@ -184,6 +184,23 @@ namespace Demo
             var client = new RouteGuide.RouteGuideClient(channel);
 
             var reply = client.SetIcpMaxIterations(new IcpMaxIterationsRequest { Maxiterations = maxIterations });
+
+            channel.ShutdownAsync().Wait();
+
+            if (reply.Retsts == false)
+            {
+                //System.Windows.Forms.MessageBox.Show("rpc return fail");
+            }
+        }
+        public void SetIcpFilter(double filter)
+        {
+            string strConString;
+            strConString = string.Format("{0}:{1}", ReadIniSettings.ReadIni.objIniValue.iniServer.Ip, ReadIniSettings.ReadIni.objIniValue.iniServer.Port);
+            Channel channel = new Channel(strConString, ChannelCredentials.Insecure);
+
+            var client = new RouteGuide.RouteGuideClient(channel);
+
+            var reply = client.SetIcpFilter(new IcpFilterRequest {Filter= (float)filter });
 
             channel.ShutdownAsync().Wait();
 

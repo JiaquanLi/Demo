@@ -12,6 +12,15 @@ namespace Demo
 {
     public partial class frm_Setting : Form
     {
+        private clsAlgorithm_Server objServer = null;
+
+        public clsAlgorithm_Server Server
+        {
+            set
+            {
+                objServer = value;
+            }
+        }
         public frm_Setting()
         {
             InitializeComponent();
@@ -32,6 +41,10 @@ namespace Demo
 
                 ReadIniSettings.ReadIni.objIniValue.iniServer.Port = tb_ServerPort.Text;
                 ReadIniSettings.ReadIni.objIniValue.iniServer.Ip = tb_ServerIp.Text;
+
+                //ICP
+                ReadIniSettings.ReadIni.objIniValue.iniIcp.filter = double.Parse(tb_filter.Text);
+                ReadIniSettings.ReadIni.objIniValue.iniIcp.maxIterationTimes = int.Parse(tb_maxIterTimes.Text);
             }
             catch (Exception ex)
             {
@@ -39,6 +52,8 @@ namespace Demo
                 return;
             }
             ReadIniSettings.ReadIni.SetAll();
+
+            UpdateIcpServer();
 
             this.DialogResult = DialogResult.OK;
         }
@@ -61,6 +76,45 @@ namespace Demo
 
             tb_ServerIp.Text = ReadIniSettings.ReadIni.objIniValue.iniServer.Ip;
             tb_ServerPort.Text = ReadIniSettings.ReadIni.objIniValue.iniServer.Port;
+
+            //ICP
+            tb_filter.Text =  ReadIniSettings.ReadIni.objIniValue.iniIcp.filter.ToString();
+            tb_maxIterTimes.Text = ReadIniSettings.ReadIni.objIniValue.iniIcp.maxIterationTimes.ToString();
+        }
+
+        private bool UpdateIcpServer()
+        {
+            if (objServer != null)
+            {
+                objServer.SetIcpMaxIte(ReadIniSettings.ReadIni.objIniValue.iniIcp.maxIterationTimes);
+                objServer.SetIcpFilter(ReadIniSettings.ReadIni.objIniValue.iniIcp.filter);
+            }
+            return true;
+        }
+
+        private void tb_maxIterTimes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void tb_filter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8) || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

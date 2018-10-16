@@ -154,14 +154,14 @@ namespace Demo
         {
             string strRpcMsg = "";
             btn_Stop.Enabled = false;
-            pb_image.Load("img.PNG");
-            Application.DoEvents();
-            objScanner.StopGetPoint();
+            //pb_image.Load("img.PNG");
+            //Application.DoEvents();
+            //objScanner.StopGetPoint();
 
-            pb_image.Visible = true;
+            //pb_image.Visible = true;
 
-            System.Threading.Thread.Sleep(100);
-            Application.DoEvents();
+            //System.Threading.Thread.Sleep(100);
+            //Application.DoEvents();
             DateTime dtStart = DateTime.Now;
 
             //objAlgorithm.SetIcpMaxIte(50);
@@ -230,7 +230,9 @@ namespace Demo
 
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             frm_Setting fmSetting = new frm_Setting();
+            fmSetting.Server = objAlgorithm;
             fmSetting.ShowDialog();
         }
 
@@ -356,8 +358,8 @@ namespace Demo
             lstPrePt.Clear();
             lstNewPt.Clear();
 
-            pt_temp.X = 248.88;
-            pt_temp.Y = 465;
+            pt_temp.X = -386.1;
+            pt_temp.Y = 484;
             pt_temp.Z = 46;
             pt_temp.A = -45.48;
             pt_temp.B = 0.33;
@@ -365,8 +367,8 @@ namespace Demo
             lstPrePt.Add(pt_temp);
 
             //2 bottom_1_inner
-            pt_temp.X = -392.87;
-            pt_temp.Y = 861.85;
+            pt_temp.X = 409.4;
+            pt_temp.Y = 485;
             pt_temp.Z = 40.03;
             pt_temp.A = -45.48;
             pt_temp.B = 0.33;
@@ -1068,7 +1070,8 @@ namespace Demo
 
         private void btn_templet_Click(object sender, EventArgs e)
         {
-            objAlgorithm.SetIcpTempletFile();
+            objAlgorithm.SetIcpMaxIte(30);
+            //objAlgorithm.SetIcpTempletFile();
         }
     }
 }
