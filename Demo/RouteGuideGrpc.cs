@@ -35,8 +35,6 @@ namespace Routeguide {
     static readonly grpc::Marshaller<global::Routeguide.TempletFileReply> __Marshaller_routeguide_TempletFileReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.TempletFileReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Routeguide.IcpMaxIterationsRequest> __Marshaller_routeguide_IcpMaxIterationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.IcpMaxIterationsRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Routeguide.IcpMaxIterationsReply> __Marshaller_routeguide_IcpMaxIterationsReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.IcpMaxIterationsReply.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Routeguide.IcpFilterRequest> __Marshaller_routeguide_IcpFilterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.IcpFilterRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Routeguide.IcpFilterReply> __Marshaller_routeguide_IcpFilterReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.IcpFilterReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Routeguide.ServerInfoRequest> __Marshaller_routeguide_ServerInfoRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.ServerInfoRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Routeguide.ServerInfoReply> __Marshaller_routeguide_ServerInfoReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.ServerInfoReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Routeguide.LisenceInfoRequest> __Marshaller_routeguide_LisenceInfoRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Routeguide.LisenceInfoRequest.Parser.ParseFrom);
@@ -62,13 +60,6 @@ namespace Routeguide {
         "SetIcpMaxIterations",
         __Marshaller_routeguide_IcpMaxIterationsRequest,
         __Marshaller_routeguide_IcpMaxIterationsReply);
-
-    static readonly grpc::Method<global::Routeguide.IcpFilterRequest, global::Routeguide.IcpFilterReply> __Method_SetIcpFilter = new grpc::Method<global::Routeguide.IcpFilterRequest, global::Routeguide.IcpFilterReply>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "SetIcpFilter",
-        __Marshaller_routeguide_IcpFilterRequest,
-        __Marshaller_routeguide_IcpFilterReply);
 
     static readonly grpc::Method<global::Routeguide.ServerInfoRequest, global::Routeguide.ServerInfoReply> __Method_CheckServer = new grpc::Method<global::Routeguide.ServerInfoRequest, global::Routeguide.ServerInfoReply>(
         grpc::MethodType.Unary,
@@ -127,17 +118,6 @@ namespace Routeguide {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Routeguide.IcpMaxIterationsReply> SetIcpMaxIterations(global::Routeguide.IcpMaxIterationsRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      ///set SetIcpFilter
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::Routeguide.IcpFilterReply> SetIcpFilter(global::Routeguide.IcpFilterRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -269,50 +249,6 @@ namespace Routeguide {
       {
         return CallInvoker.AsyncUnaryCall(__Method_SetIcpMaxIterations, null, options, request);
       }
-      /// <summary>
-      ///set SetIcpFilter
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::Routeguide.IcpFilterReply SetIcpFilter(global::Routeguide.IcpFilterRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return SetIcpFilter(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      ///set SetIcpFilter
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::Routeguide.IcpFilterReply SetIcpFilter(global::Routeguide.IcpFilterRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_SetIcpFilter, null, options, request);
-      }
-      /// <summary>
-      ///set SetIcpFilter
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Routeguide.IcpFilterReply> SetIcpFilterAsync(global::Routeguide.IcpFilterRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return SetIcpFilterAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      ///set SetIcpFilter
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Routeguide.IcpFilterReply> SetIcpFilterAsync(global::Routeguide.IcpFilterRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_SetIcpFilter, null, options, request);
-      }
       public virtual global::Routeguide.ServerInfoReply CheckServer(global::Routeguide.ServerInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return CheckServer(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -360,7 +296,6 @@ namespace Routeguide {
           .AddMethod(__Method_RouteChat, serviceImpl.RouteChat)
           .AddMethod(__Method_SetIcpTemplet, serviceImpl.SetIcpTemplet)
           .AddMethod(__Method_SetIcpMaxIterations, serviceImpl.SetIcpMaxIterations)
-          .AddMethod(__Method_SetIcpFilter, serviceImpl.SetIcpFilter)
           .AddMethod(__Method_CheckServer, serviceImpl.CheckServer)
           .AddMethod(__Method_CheckLisence, serviceImpl.CheckLisence).Build();
     }

@@ -306,7 +306,72 @@ namespace Demo
             }
 
             Matric_input = new double[4, 4] { { r0[0], r0[1], r0[2], t[0] }, { r1[0], r1[1], r1[2], t[1] }, { r2[0], r2[1], r2[2], t[2] }, { 0.0, 0.0, 0.0, 1 } };
-          
+
+        }
+
+        private void CreateArryCC()
+        {
+            double[] L0 = new double[4];
+            double[] L1 = new double[4];
+            double[] L2 = new double[4];
+            double[] L3 = new double[4];
+
+
+            
+           
+            string strFileName = "E:\\CloudCompare\\build\\qCC\\Release\\result.txt";
+
+            if (System.IO.File.Exists(strFileName))
+            {
+                System.IO.File.Delete(strFileName);
+            }
+
+            System.IO.File.Copy("model.txt", "E:\\CloudCompare\\build\\qCC\\Release\\model.txt");
+
+            System.Threading.Thread.Sleep(5000);
+            while (System.IO.File.Exists(strFileName) == false)
+            {
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(500);
+            }
+
+            string strTemp = "";
+            System.IO.FileStream fs = new System.IO.FileStream(strFileName, System.IO.FileMode.Open);
+            System.IO.StreamReader sr = new System.IO.StreamReader(fs);
+
+            strTemp = sr.ReadLine();
+            string[] strArry = strTemp.Split('\t');
+            L0[0] = double.Parse(strArry[0]);
+            L0[1] = double.Parse(strArry[1]);
+            L0[2] = double.Parse(strArry[2]);
+            L0[3] = double.Parse(strArry[3]);
+
+            strTemp = sr.ReadLine();
+            strArry = strTemp.Split('\t');
+            L1[0] = double.Parse(strArry[0]);
+            L1[1] = double.Parse(strArry[1]);
+            L1[2] = double.Parse(strArry[2]);
+            L1[3] = double.Parse(strArry[3]);
+
+            strTemp = sr.ReadLine();
+            strArry = strTemp.Split('\t');
+            L2[0] = double.Parse(strArry[0]);
+            L2[1] = double.Parse(strArry[1]);
+            L2[2] = double.Parse(strArry[2]);
+            L2[3] = double.Parse(strArry[3]);
+
+            strTemp = sr.ReadLine();
+            strArry = strTemp.Split('\t');
+            L3[0] = double.Parse(strArry[0]);
+            L3[1] = double.Parse(strArry[1]);
+            L3[2] = double.Parse(strArry[2]);
+            L3[3] = double.Parse(strArry[3]);
+
+            Matric_input = new double[4, 4] { { L0[0], L0[1], L0[2], L0[3] }, { L1[0], L1[1], L1[2], L1[3] }, { L2[0], L2[1], L2[2], L2[3] }, { 0.0, 0.0, 0.0, 1 } };
+
+            sr.Close();
+            fs.Close();
+            System.IO.File.Delete(strFileName);
         }
 
         private void GetNewPointByMatrix()
@@ -1036,7 +1101,6 @@ namespace Demo
 
         private static void StartListening()
         {
-            return;
             int a = 0;
 
             TcpListener server = null;
@@ -1045,7 +1109,7 @@ namespace Demo
             server.Start();
             String strSend = null;
 
-            byte[] bytes = new Byte[1024];
+            byte[] bytes = new Byte[4096];
             Socket handler;
             while (true)
             {
@@ -1070,8 +1134,39 @@ namespace Demo
 
         private void btn_templet_Click(object sender, EventArgs e)
         {
-            objAlgorithm.SetIcpMaxIte(30);
-            //objAlgorithm.SetIcpTempletFile();
+            //CreateOriginalPoints();
+            //clsXML.WritePoint(lstPrePt, 1, "points.xml");
+            objAlgorithm.SetIcpTempletFile();
+        }
+
+        private void btn_iter_Click(object sender, EventArgs e)
+        {
+            int times = 0;
+
+            try
+            {
+                times = int.Parse(tb_iter.Text);
+            }
+            catch
+            {
+                MessageBox.Show("err");
+                return;
+            }
+            objAlgorithm.SetIcpMaxIte(times);
+        }
+
+        private void btn_STP_Click(object sender, EventArgs e)
+        {
+            objScanner.StopGetPoint();
+            btn_start.Enabled = true;
+            btn_Stop.Enabled = true;
+        }
+
+        private void btn_test_Click(object sender, EventArgs e)
+        {
+
+            CreateOriginalPoints();
+            clsXML.WritePoint(lstPrePt, 1, "points.xml");
         }
     }
 }

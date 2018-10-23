@@ -27,26 +27,23 @@ namespace Routeguide {
             "ZVJlcXVlc3QSEAoIZGF0YXNlbmQYASABKAwSDAoEc2l6ZRgCIAEoBSIiChBU",
             "ZW1wbGV0RmlsZVJlcGx5Eg4KBnJldHN0cxgBIAEoCCIwChdJY3BNYXhJdGVy",
             "YXRpb25zUmVxdWVzdBIVCg1tYXhpdGVyYXRpb25zGAEgASgFIicKFUljcE1h",
-            "eEl0ZXJhdGlvbnNSZXBseRIOCgZyZXRzdHMYASABKAgiIgoQSWNwRmlsdGVy",
-            "UmVxdWVzdBIOCgZmaWx0ZXIYASABKAIiIAoOSWNwRmlsdGVyUmVwbHkSDgoG",
-            "cmV0c3RzGAEgASgIIkoKD1NlcnZlckluZm9SZXBseRIPCgdyZXZzaW9uGAEg",
-            "ASgJEhEKCWJ1aWxkZGF0ZRgCIAEoCRITCgtjb21wbGF5bmFtZRgDIAEoCSIk",
-            "ChFTZXJ2ZXJJbmZvUmVxdWVzdBIPCgdtZXNzYWdlGAEgASgJIjQKEExpc2Vu",
-            "Y2VJbmZvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCRIPCgdzdGF0dWVzGAIgASgI",
-            "IisKEkxpc2VuY2VJbmZvUmVxdWVzdBIVCg1jbGllbnRMaWNlbnNlGAEgASgJ",
-            "MuoDCgpSb3V0ZUd1aWRlEj8KCVJvdXRlQ2hhdBIVLnJvdXRlZ3VpZGUuUm91",
-            "dGVOb3RlGhUucm91dGVndWlkZS5Sb3V0ZU5vdGUiACgBMAESUQoNU2V0SWNw",
-            "VGVtcGxldBIeLnJvdXRlZ3VpZGUuVGVtcGxldEZpbGVSZXF1ZXN0Ghwucm91",
-            "dGVndWlkZS5UZW1wbGV0RmlsZVJlcGx5IgAoARJfChNTZXRJY3BNYXhJdGVy",
-            "YXRpb25zEiMucm91dGVndWlkZS5JY3BNYXhJdGVyYXRpb25zUmVxdWVzdBoh",
-            "LnJvdXRlZ3VpZGUuSWNwTWF4SXRlcmF0aW9uc1JlcGx5IgASSgoMU2V0SWNw",
-            "RmlsdGVyEhwucm91dGVndWlkZS5JY3BGaWx0ZXJSZXF1ZXN0Ghoucm91dGVn",
-            "dWlkZS5JY3BGaWx0ZXJSZXBseSIAEksKC0NoZWNrU2VydmVyEh0ucm91dGVn",
-            "dWlkZS5TZXJ2ZXJJbmZvUmVxdWVzdBobLnJvdXRlZ3VpZGUuU2VydmVySW5m",
-            "b1JlcGx5IgASTgoMQ2hlY2tMaXNlbmNlEh4ucm91dGVndWlkZS5MaXNlbmNl",
-            "SW5mb1JlcXVlc3QaHC5yb3V0ZWd1aWRlLkxpc2VuY2VJbmZvUmVwbHkiAEI2",
-            "Chtpby5ncnBjLmV4YW1wbGVzLnJvdXRlZ3VpZGVCD1JvdXRlR3VpZGVQcm90",
-            "b1ABogIDUlRHYgZwcm90bzM="));
+            "eEl0ZXJhdGlvbnNSZXBseRIOCgZyZXRzdHMYASABKAgiSgoPU2VydmVySW5m",
+            "b1JlcGx5Eg8KB3JldnNpb24YASABKAkSEQoJYnVpbGRkYXRlGAIgASgJEhMK",
+            "C2NvbXBsYXluYW1lGAMgASgJIiQKEVNlcnZlckluZm9SZXF1ZXN0Eg8KB21l",
+            "c3NhZ2UYASABKAkiNAoQTGlzZW5jZUluZm9SZXBseRIPCgdtZXNzYWdlGAEg",
+            "ASgJEg8KB3N0YXR1ZXMYAiABKAgiKwoSTGlzZW5jZUluZm9SZXF1ZXN0EhUK",
+            "DWNsaWVudExpY2Vuc2UYASABKAkyngMKClJvdXRlR3VpZGUSPwoJUm91dGVD",
+            "aGF0EhUucm91dGVndWlkZS5Sb3V0ZU5vdGUaFS5yb3V0ZWd1aWRlLlJvdXRl",
+            "Tm90ZSIAKAEwARJRCg1TZXRJY3BUZW1wbGV0Eh4ucm91dGVndWlkZS5UZW1w",
+            "bGV0RmlsZVJlcXVlc3QaHC5yb3V0ZWd1aWRlLlRlbXBsZXRGaWxlUmVwbHki",
+            "ACgBEl8KE1NldEljcE1heEl0ZXJhdGlvbnMSIy5yb3V0ZWd1aWRlLkljcE1h",
+            "eEl0ZXJhdGlvbnNSZXF1ZXN0GiEucm91dGVndWlkZS5JY3BNYXhJdGVyYXRp",
+            "b25zUmVwbHkiABJLCgtDaGVja1NlcnZlchIdLnJvdXRlZ3VpZGUuU2VydmVy",
+            "SW5mb1JlcXVlc3QaGy5yb3V0ZWd1aWRlLlNlcnZlckluZm9SZXBseSIAEk4K",
+            "DENoZWNrTGlzZW5jZRIeLnJvdXRlZ3VpZGUuTGlzZW5jZUluZm9SZXF1ZXN0",
+            "Ghwucm91dGVndWlkZS5MaXNlbmNlSW5mb1JlcGx5IgBCNgobaW8uZ3JwYy5l",
+            "eGFtcGxlcy5yb3V0ZWd1aWRlQg9Sb3V0ZUd1aWRlUHJvdG9QAaICA1JUR2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -55,8 +52,6 @@ namespace Routeguide {
             new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.TempletFileReply), global::Routeguide.TempletFileReply.Parser, new[]{ "Retsts" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.IcpMaxIterationsRequest), global::Routeguide.IcpMaxIterationsRequest.Parser, new[]{ "Maxiterations" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.IcpMaxIterationsReply), global::Routeguide.IcpMaxIterationsReply.Parser, new[]{ "Retsts" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.IcpFilterRequest), global::Routeguide.IcpFilterRequest.Parser, new[]{ "Filter" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.IcpFilterReply), global::Routeguide.IcpFilterReply.Parser, new[]{ "Retsts" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.ServerInfoReply), global::Routeguide.ServerInfoReply.Parser, new[]{ "Revsion", "Builddate", "Complayname" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.ServerInfoRequest), global::Routeguide.ServerInfoRequest.Parser, new[]{ "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Routeguide.LisenceInfoReply), global::Routeguide.LisenceInfoReply.Parser, new[]{ "Message", "Statues" }, null, null, null),
@@ -484,7 +479,7 @@ namespace Routeguide {
   }
 
   /// <summary>
-  ///IcpMaxIterationsRequest.
+  /// A RouteNote is a message sent while at a given point.
   /// </summary>
   public sealed partial class IcpMaxIterationsRequest : pb::IMessage<IcpMaxIterationsRequest> {
     private static readonly pb::MessageParser<IcpMaxIterationsRequest> _parser = new pb::MessageParser<IcpMaxIterationsRequest>(() => new IcpMaxIterationsRequest());
@@ -604,7 +599,7 @@ namespace Routeguide {
   }
 
   /// <summary>
-  /// IcpMaxIterationsReply.
+  /// A RouteNote is a message sent while at a given point.
   /// </summary>
   public sealed partial class IcpMaxIterationsReply : pb::IMessage<IcpMaxIterationsReply> {
     private static readonly pb::MessageParser<IcpMaxIterationsReply> _parser = new pb::MessageParser<IcpMaxIterationsReply>(() => new IcpMaxIterationsReply());
@@ -724,246 +719,6 @@ namespace Routeguide {
   }
 
   /// <summary>
-  /// IcpFilterRequest.
-  /// </summary>
-  public sealed partial class IcpFilterRequest : pb::IMessage<IcpFilterRequest> {
-    private static readonly pb::MessageParser<IcpFilterRequest> _parser = new pb::MessageParser<IcpFilterRequest>(() => new IcpFilterRequest());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<IcpFilterRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IcpFilterRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IcpFilterRequest(IcpFilterRequest other) : this() {
-      filter_ = other.filter_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IcpFilterRequest Clone() {
-      return new IcpFilterRequest(this);
-    }
-
-    /// <summary>Field number for the "filter" field.</summary>
-    public const int FilterFieldNumber = 1;
-    private float filter_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float Filter {
-      get { return filter_; }
-      set {
-        filter_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as IcpFilterRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(IcpFilterRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Filter != other.Filter) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Filter != 0F) hash ^= Filter.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Filter != 0F) {
-        output.WriteRawTag(13);
-        output.WriteFloat(Filter);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Filter != 0F) {
-        size += 1 + 4;
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(IcpFilterRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Filter != 0F) {
-        Filter = other.Filter;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 13: {
-            Filter = input.ReadFloat();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// IcpFilterReply.
-  /// </summary>
-  public sealed partial class IcpFilterReply : pb::IMessage<IcpFilterReply> {
-    private static readonly pb::MessageParser<IcpFilterReply> _parser = new pb::MessageParser<IcpFilterReply>(() => new IcpFilterReply());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<IcpFilterReply> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[6]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IcpFilterReply() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IcpFilterReply(IcpFilterReply other) : this() {
-      retsts_ = other.retsts_;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IcpFilterReply Clone() {
-      return new IcpFilterReply(this);
-    }
-
-    /// <summary>Field number for the "retsts" field.</summary>
-    public const int RetstsFieldNumber = 1;
-    private bool retsts_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Retsts {
-      get { return retsts_; }
-      set {
-        retsts_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as IcpFilterReply);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(IcpFilterReply other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Retsts != other.Retsts) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Retsts != false) hash ^= Retsts.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Retsts != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(Retsts);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Retsts != false) {
-        size += 1 + 1;
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(IcpFilterReply other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Retsts != false) {
-        Retsts = other.Retsts;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 8: {
-            Retsts = input.ReadBool();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
   /// Read Server information
   /// </summary>
   public sealed partial class ServerInfoReply : pb::IMessage<ServerInfoReply> {
@@ -973,7 +728,7 @@ namespace Routeguide {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1146,7 +901,7 @@ namespace Routeguide {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1266,7 +1021,7 @@ namespace Routeguide {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1411,7 +1166,7 @@ namespace Routeguide {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Routeguide.RouteGuideReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

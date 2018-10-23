@@ -145,8 +145,7 @@ namespace Demo
                         noteSend.Datasend = ByteString.CopyFromUtf8(strTemp);
                         noteSend.Size = strTemp.Length;
                         await call.RequestStream.WriteAsync(noteSend);
-                        // A bit of delay before sending the next one.
-                        await Task.Delay(100);
+                        await Task.Delay(10);
                         total -= iCpyCunt;
                         index += iCpyCunt;
                     }
@@ -218,6 +217,19 @@ namespace Demo
                 return;
             }
             Callback("Ping Server: Statue ok ...");
+
+            try
+            {
+                FileInfo fInfo = new FileInfo("CloudPoint.txt");
+                Callback("Start Send PointClould Size: " + fInfo.Length.ToString());
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return;
+            }
+
+
             System.Threading.Thread th = new System.Threading.Thread(new System.Threading.ThreadStart(RpcRun));
             th.IsBackground = true;
             th.Start();
